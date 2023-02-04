@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AnastasiaGPopova/Cubicle-Workshop-2023.git"
+    "url": "git+https://github.com/AnastasiaGPopova/Tutorials---ExamPrep"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AnastasiaGPopova/Cubicle-Workshop-2023/issues"
+    "url": "https://github.com/AnastasiaGPopova/Tutorials---ExamPrep/issues"
   },
-  "homepage": "https://github.com/AnastasiaGPopova/Cubicle-Workshop-2023#readme",
+  "homepage": "https://github.com/AnastasiaGPopova/Tutorials---ExamPrep#readme",
   "devDependencies": {
     "nodemon": "^2.0.20"
   },
