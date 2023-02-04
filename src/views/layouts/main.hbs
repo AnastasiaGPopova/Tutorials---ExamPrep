@@ -3,33 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Attach Accessory</title>
+    <title>JS Back-End - Exam - November 2020</title>
     <link href="/css/site.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <ul>
-                <li><img class="logo" src="/images/logo.png"></li>
-                <li><a href="/">Browse</a></li>
-                <li><a href="/about">About</a></li>
-                {{#if isAuthenticated}}
-                <li><a href="/create">Add a Cube</a></li>
-                <li><a href="/accessory/create">Add Accessory</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/logout">Logout</a></li>
-                {{else}}
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a class="navbar-brand" href="/">Tutorials</a>
 
-                {{/if}}
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Welcome, {{username}}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/register">Register</a>
+                </li>
+
             </ul>
-        </header>
-    {{{body}}}
-      </div>
-  <footer>@Cubicle: Exercise for Express.js and Handlebars</footer>
+        </nav>
+
+        <section class="notifications">
+            <p class="notification-message">Message...</p>
+        </section>
+
+        {{{body}}}
+
+        <footer class="page-footer font-small">
+            <div class="footer-copyright text-center py-3">© 2020
+                <a href="https://softuni.bg/trainings/3048/js-back-end-september-2020">JS Back-End</a>
+            </div>
+        </footer>
+
+    </div>
 </body>
 
 </html>

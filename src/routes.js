@@ -14,7 +14,7 @@ const {isAuthenticated} = require('./middlewares/authMiddleware.js')
 
 //-------------------------------------------
 
-router.get('/', homeController.getHomePage)
+router.get('/', isAuthenticated ?  homeController.getUsertHomePage : homeController.getGuestHomePage)
 router.get('/about', homeController.getAboutPage)
 
 
