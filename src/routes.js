@@ -14,8 +14,8 @@ const {isAuthenticated} = require('./middlewares/authMiddleware.js')
 
 //-------------------------------------------
 
-router.get('/', isAuthenticated ?  homeController.getUsertHomePage : homeController.getGuestHomePage)
-router.get('/about', homeController.getAboutPage)
+router.get('/', homeController.getHomePage)
+
 
 
 //----------------How to access the cube create page action----------------------
@@ -25,6 +25,14 @@ router.get('/about', homeController.getAboutPage)
 
 // app.get('/create', cubeController.getCubCreation)
 //---------------------------------------
+
+//Login and Register
+router.get('/login', authController.loginPage)
+router.get('/register', authController.registerPage)
+router.post('/register', authController.postRegisterUser)
+router.post('/login', authController.postLoginUser)
+
+
 
 router.get('/404', homeController.getErrorPage404)
 router.get('/create', isAuthenticated, cubeController.getCubCreation)
@@ -43,10 +51,7 @@ router.get('/logout', authController.logout)
 
 router.get('/cubes/:cubeId/attach', cubeController.getAttachAccessory)
 router.post('/cubes/:cubeId/attach', cubeController.postAttachedAccessory)
-router.get('/login', authController.loginPage)
-router.get('/register', authController.registerPage)
-router.post('/register', authController.postRegisterUser)
-router.post('/login', authController.postLoginUser)
+
 
 
 router.use('/accessory', asseccoryController)
