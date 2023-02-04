@@ -1,11 +1,13 @@
-const Cube = require('../models/Cube.js')
+const Tutorial = require('../models/Tutorial.js')
 
 
-exports.getHomePage = (req, res) => {
+exports.getHomePage = async (req, res) => {
     if(req.user) {
-        res.render('user-home')
+        const tutorials = await Tutorial.find().lean()
+        res.render('user-home', {tutorials})
     } else {
-        res.render('guest-home')
+        const tutotials = await Tutorial.find().lean()
+        res.render('guest-home', {tutotials})
     }
 }
 

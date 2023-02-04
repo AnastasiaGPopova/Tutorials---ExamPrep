@@ -19,8 +19,9 @@ exports.postRegisterUser = async (req, res) => {
         return res.redirect('/404')
     }
 
-    const user = await authService.register(username, password)
-    res.redirect('/login')
+    const token = await authService.register(username, password)
+    res.cookie('auth', token, {httpOnly: true})
+    res.redirect('/')
 }
 
 exports.postLoginUser = async (req, res) => {

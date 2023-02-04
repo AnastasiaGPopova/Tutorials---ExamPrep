@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 
-const cubeSchema = new mongoose.Schema({
-    name: {
+const tutorialSchema = new mongoose.Schema({
+    title: {
         type: String,
         required: true,
     }, 
     description: {
         type: String,
         required: true,
+        minLength: 20,
         maxLength: 50, //check real length
     },
     imageUrl: {
@@ -22,21 +23,22 @@ const cubeSchema = new mongoose.Schema({
         }
 
     }, 
-    difficultyLevel: {
-        type: Number,
+    duration: {
+        type: String,
         required: true,
-        max: 6,
-        min: 1,
     },
-    accessories: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Accessory'
-    }],
+    createdAt: {
+        type: Date, default: Date.now
+    },
     owner: {
         type:mongoose.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    usersEnrolled:[{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    }],
 })
 
-const Cube = mongoose.model('Cube', cubeSchema)
-module.exports = Cube
+const Tutorial = mongoose.model('Tutorial', tutorialSchema)
+module.exports = Tutorial

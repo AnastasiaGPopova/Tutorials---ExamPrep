@@ -6,9 +6,8 @@ const router = Router()
 
 
 //----- importing the controllers----------
-const cubeController = require('./controllers/cubeController')
+const coursController = require('./controllers/coursController')
 const homeController = require('./controllers/homeController')
-const asseccoryController = require('./controllers/accessoryController')
 const authController = require('./controllers/authController.js')
 const {isAuthenticated} = require('./middlewares/authMiddleware.js')
 
@@ -35,28 +34,38 @@ router.post('/login', authController.postLoginUser)
 
 
 router.get('/404', homeController.getErrorPage404)
-router.get('/create', isAuthenticated, cubeController.getCubCreation)
-router.post('/create', isAuthenticated, cubeController.postCreateCube)
-router.get('/cubes/:cubeId/details', cubeController.getDetails)
-//Edit page
-router.get('/cubes/:cubeId/edit', cubeController.getEditCubePage)
-router.post('/cubes/:cubeId/edit', cubeController.postEditedCube)
 
-//Delete Page
-router.get('/cubes/:cubeId/delete', cubeController.getDeletedCubePage)
-router.post('/cubes/:cubeId/delete', cubeController.postDeleteCube)
+//Courses
+
+router.get('/course/create', isAuthenticated, coursController.getCourseCreation)
+router.post('/course/create', isAuthenticated, coursController.postCreateCourse)
+
+router.get('/course/:courseId/details', coursController.getDetails)
+
+//Edit Page
+router.get('/course/:courseId/edit', isAuthenticated, coursController.getEditCoursePage)
+router.post('/course/:courseId/edit', isAuthenticated,coursController.postEditedCourse)
+
+//Delete Course
+router.post('/course/:courseId/delete', coursController.postDeleteCourse)
+
+//Enroll Course
+router.get('/course/:courseId/enroll', coursController.postEnrollCourse)
+
+// // router.get('/cubes/:cubeId/details', coursController.getDetails)
+// //Edit page
+// router.get('/cubes/:cubeId/edit', coursController.getEditCubePage)
+// router.post('/cubes/:cubeId/edit', coursController.postEditedCube)
+
+// //Delete Page
+// router.get('/cubes/:cubeId/delete', coursController.getDeletedCubePage)
+// router.post('/cubes/:cubeId/delete', coursController.postDeleteCube)
 
 router.get('/logout', authController.logout)
 
 
-router.get('/cubes/:cubeId/attach', cubeController.getAttachAccessory)
-router.post('/cubes/:cubeId/attach', cubeController.postAttachedAccessory)
-
-
-
-router.use('/accessory', asseccoryController)
-
-
+// router.get('/cubes/:cubeId/attach', coursController.getAttachAccessory)
+// router.post('/cubes/:cubeId/attach', coursController.postAttachedAccessory)
 
 
 module.exports = router

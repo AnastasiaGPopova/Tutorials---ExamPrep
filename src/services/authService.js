@@ -4,7 +4,14 @@ const config = require('../configurations/configPorts')
 
 exports.getUserByUsername =  (username) => User.findOne({username})
 
-exports.register = (username, plainPassword) => User.create({username, password: plainPassword})
+exports.register = async (username, plainPassword) => {
+   const newUser = User.create({username, password: plainPassword})
+   const payLoad = {_id:newUser._id, username: newUser.username}
+   const token = await jwt.sign(payLoad, config.SECRET, {expiresIn: '2h'})
+
+   return token
+
+} 
 
 exports.login = async (username, password) => {
     const existingUser = await this.getUserByUsername(username)
