@@ -37,7 +37,7 @@ exports.getDetails = async (req, res) => {
                                        .lean()
 
      if(!currentCourse){
-    return res.redirect('/404')
+    return res.redirect('/')
       }
 
     isLogged = true

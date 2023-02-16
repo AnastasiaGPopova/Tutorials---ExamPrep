@@ -2,10 +2,16 @@ const authService = require('../services/authService.js')
 const parser = require('../utils/parser.js')
 
 exports.loginPage = (req,res) => {
+    if(req.user){
+        res.redirect('/')
+    }
     res.render('auth/login')
 }
 
 exports.registerPage = (req,res) => {
+    if(req.user){
+        res.redirect('/')
+    }
     res.render('auth/register')
 }
 

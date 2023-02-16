@@ -14,7 +14,3 @@ exports.getHomePage = async (req, res) => {
                 res.render('guest-home', {allCoursesByLikes})
         }
 }
-
-exports.getErrorPage404 = (req, res) => {
-    res.render('404')
-}
